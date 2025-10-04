@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MindRelief — Khảo sát & Trò chơi thư giãn</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<header class="nav">
+    <div class="nav__inner">
+        <div class="brand">MindRelief</div>
+        <nav class="nav__links">
+            <a href="#" data-goto="home">Trang chủ</a>
+            <a class="btn btn--primary btn--cta" href="#" data-goto="survey">Làm khảo sát</a>
+        </nav>
+    </div>
+</header>
+
+<main id="app">
+    <!-- HOME -->
+    <section id="view-home" class="view active">
+        <section class="hero">
+            <div class="hero__content">
+                <h1>Giảm căng thẳng, tốt hơn mỗi ngày</h1>
+                <p>Tự đánh giá <b>PHQ-9</b>, <b>GAD-7</b>, <b>PSS-10</b> và chơi
+                    <b>trò chơi thư giãn</b> ngay trong trình duyệt. Mọi tính toán <b>trên thiết bị của bạn</b>.
+                </p>
+                <div class="hero__ctas">
+                    <a class="btn btn--primary btn--cta" href="#" data-goto="survey">Làm khảo sát</a>
+                </div>
+            </div>
+            <div class="hero__art" aria-hidden="true"><div class="bubbles"><span></span><span></span><span></span><span></span><span></span></div></div>
+        </section>
+
+        <section class="section">
+            <h2>Động lực dự án</h2>
+            <ul class="bullets">
+                <li>Chuẩn hóa theo thang đo PHQ-9, GAD-7, PSS-10</li>
+                <li>Không thu thập dữ liệu cá nhân · xử lý tại máy</li>
+                <li>Nhiều trò chơi thư giãn, chơi trực tiếp trong web</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Một số trò chơi thư giãn</h2>
+            <div class="cards" id="game-cards-home"></div>
+            <div class="center mt-16">
+                <a class="btn btn--ghost" href="#" data-goto="survey">Làm khảo sát để nhận gợi ý cá nhân hóa</a>
+            </div>
+        </section>
+    </section>
+
+    <!-- SURVEY -->
+    <section id="view-survey" class="view">
+        <div class="container">
+            <h2>Khảo sát tâm lý</h2>
+            <p class="muted">PHQ-9 & GAD-7 theo 2 tuần gần đây, PSS-10 theo 1 tháng.</p>
+
+            <div class="progress"><div class="progress__bar" id="progress-bar"></div></div>
+            <form id="survey-form" class="form-vertical"></form>
+
+            <div class="actions">
+                <button class="btn" type="button" data-goto="home">← Trang chủ</button>
+                <button class="btn btn--primary" type="submit" form="survey-form">Gửi</button>
+            </div>
+
+            <div id="safety-box" class="notice hidden"></div>
+
+            <section id="results" class="results hidden">
+                <h3>Kết quả tổng quan</h3>
+                <div class="pill-grid" id="pill-grid"></div>
+
+                <h3 class="mt-24">Gợi ý trò chơi dành cho bạn</h3>
+                <div class="cards" id="game-cards-results"></div>
+            </section>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    © <span id="year"></span> MindRelief · Bản demo giáo dục — không thay cho chẩn đoán.
+</footer>
+
+<script src="./app.js"></script>
+</body>
+</html>
