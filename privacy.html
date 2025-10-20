@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Edumindcare – Chính sách Bảo mật</title>
+<style>
+  :root{
+    --brand:#0ea5e9; /* cyan-500 ring hint for the dot in screenshot */
+    --ink:#111827;
+    --muted:#4b5563;
+    --bg:#ffffff;
+    --border:#e5e7eb;
+  }
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans",sans-serif;
+    -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  }
+  a{color:inherit; text-decoration:none}
+  img{max-width:100%; display:block}
+  .container{max-width:1260px; padding:0 24px; margin:0 auto}
+  /* === Unified Header === */
+  .navbar{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.96);
+          border-bottom:1px solid var(--border); backdrop-filter:saturate(160%) blur(8px)}
+  .nav-row{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 10px}
+  .brand{display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:.02em; font-size:28px}
+  .brand-dot{width:16px; height:16px; border:3px solid var(--brand); border-radius:50%}
+  .links{display:flex; gap:28px; font-weight:700; font-size:15px}
+  .links a[aria-current="page"]{text-decoration:underline}
+  /* Sections / utilities */
+  .section{padding:64px 0}
+  .lead{font-size:17px; color:var(--muted); line-height:1.75}
+  .title-hero{font-size:40px; line-height:1.12; font-weight:900}
+  @media(min-width:768px){ .title-hero{font-size:56px} }
+  .frame{border:1px solid var(--border); border-radius:16px; overflow:hidden}
+  .tall{height:520px}
+  /* Footer */
+  footer{padding:32px 0; border-top:1px solid var(--border)}
+  .footer-links{display:flex; gap:22px; justify-content:center; flex-wrap:wrap; font-weight:700; font-size:14px}
+  .divider{height:1px; background:var(--border); max-width:820px; margin:12px auto}
+  .footer-meta{display:flex; justify-content:space-between; align-items:center; gap:16px; max-width:820px; margin:0 auto; color:var(--muted); font-size:14px}
+  /* Reveal */
+  .reveal{opacity:0; transform:translateY(14px) scale(.997); filter:blur(3px);
+    transition:opacity .7s cubic-bezier(.25,.9,.25,1), transform .7s cubic-bezier(.25,.9,.25,1), filter .7s cubic-bezier(.25,.9,.25,1)}
+  .reveal.in-view{opacity:1; transform:none; filter:none}
+  @media (prefers-reduced-motion: reduce){ .reveal{transition:none; transform:none; filter:none; opacity:1} }
+
+  .page-title{font-size:40px; line-height:1.12; font-weight:900; margin:22px 0 6px}
+  @media(min-width:768px){ .page-title{font-size:56px} }
+  .container-narrow{max-width:980px; padding:0 24px; margin:0 auto}
+</style>
+</head>
+<body>
+
+  <header class="navbar">
+    <nav class="container nav-row">
+      <a class="brand" href="index.html"><span class="brand-dot" aria-hidden="true"></span> <span>Edumindcare</span></a>
+      <div class="links">
+        <a href="about.html">Phương pháp của Chúng tôi</a>
+        <a href="games.html">Trò Chơi Giảm Căng Thẳng</a>
+        <a href="survey.html">Khảo Sát</a>
+        <a href="contact.html">Liên Hệ</a>
+      </div>
+    </nav>
+  </header>
+
+<main class="section">
+  <div class="container-narrow">
+
+<h1 class="page-title">Chính sách Bảo mật</h1>
+<p class="lead">Quyền riêng tư của bạn rất quan trọng đối với Edumindcare. Chính sách Bảo mật này trình bày cách chúng tôi thu thập, sử dụng và bảo vệ thông tin cá nhân của bạn khi bạn sử dụng trang web và dịch vụ của chúng tôi. Bằng cách sử dụng Edumindcare, bạn đồng ý với các điều khoản của Chính sách Bảo mật này.</p>
+
+<h2>1. Thông tin Chúng tôi Thu thập</h2>
+<p>Chúng tôi có thể thu thập các loại thông tin sau:</p>
+<ul>
+  <li><strong>Thông tin Cá nhân:</strong> Điều này bao gồm tên, địa chỉ email, số điện thoại của bạn và bất kỳ thông tin nào khác mà bạn cung cấp khi liên hệ với chúng tôi hoặc sử dụng dịch vụ của chúng tôi.</li>
+  <li><strong>Dữ liệu Sử dụng:</strong> Chúng tôi thu thập thông tin về cách bạn sử dụng trang web của chúng tôi, bao gồm địa chỉ IP, loại trình duyệt, hệ điều hành, URL giới thiệu, các trang đã truy cập và ngày/giờ bạn truy cập.</li>
+  <li><strong>Dữ liệu Đánh giá AI:</strong> Nếu bạn tham gia vào các đánh giá sức khỏe tâm thần dựa trên AI của chúng tôi, chúng tôi sẽ thu thập dữ liệu liên quan đến phản hồi và tương tác của bạn với các công cụ đánh giá. Dữ liệu này được sử dụng để cung cấp các đề xuất được cá nhân hóa và cải thiện dịch vụ của chúng tôi.</li>
+</ul>
+
+<h2>2. Cách Chúng tôi Sử dụng Thông tin của Bạn</h2>
+<p>Chúng tôi sử dụng thông tin chúng tôi thu thập cho các mục đích sau:</p>
+<ul>
+  <li><strong>Để Cung cấp và Cải thiện Dịch vụ:</strong> Chúng tôi sử dụng thông tin của bạn để cung cấp dịch vụ của chúng tôi, cá nhân hóa trải nghiệm của bạn và cải thiện chức năng và nội dung của trang web của chúng tôi.</li>
+  <li><strong>Để Liên lạc với Bạn:</strong> Chúng tôi có thể sử dụng thông tin liên hệ của bạn để trả lời các câu hỏi của bạn, cung cấp thông tin cập nhật về dịch vụ của chúng tôi và gửi cho bạn thông tin liên quan về sức khỏe tâm thần và giảm căng thẳng.</li>
+  <li><strong>Để Tiến hành Nghiên cứu và Phân tích:</strong> Chúng tôi có thể sử dụng dữ liệu tổng hợp và ẩn danh cho mục đích nghiên cứu và phân tích để hiểu rõ hơn về các xu hướng sức khỏe tâm thần và cải thiện các công cụ đánh giá dựa trên AI của chúng tôi.</li>
+  <li><strong>Để Đảm bảo An ninh:</strong> Chúng tôi sử dụng thông tin của bạn để bảo vệ trang web và dịch vụ của chúng tôi khỏi gian lận, lạm dụng và truy cập trái phép.</li>
+</ul>
+
+<h2>3. Bảo mật Dữ liệu</h2>
+<p>Chúng tôi thực hiện các biện pháp hợp lý để bảo vệ thông tin cá nhân của bạn khỏi truy cập, sử dụng hoặc tiết lộ trái phép. Các biện pháp này bao gồm:</p>
+<ul>
+  <li>Sử dụng mã hóa để bảo vệ dữ liệu nhạy cảm được truyền trực tuyến.</li>
+  <li>Triển khai tường lửa và hệ thống phát hiện xâm nhập để ngăn chặn truy cập trái phép vào hệ thống của chúng tôi.</li>
+  <li>Thường xuyên xem xét và cập nhật các biện pháp bảo mật của chúng tôi để giải quyết các mối đe dọa và lỗ hổng mới.</li>
+  <li>Hạn chế quyền truy cập vào thông tin cá nhân chỉ cho nhân viên được ủy quyền.</li>
+</ul>
+<p>Tuy nhiên, không có phương pháp truyền tải nào qua Internet hoặc phương pháp lưu trữ điện tử nào là an toàn 100%. Do đó, chúng tôi không thể đảm bảo tính bảo mật tuyệt đối cho thông tin của bạn.</p>
+
+<h2>4. Chia sẻ và Tiết lộ Dữ liệu</h2>
+<p>Chúng tôi có thể chia sẻ thông tin của bạn với các bên thứ ba trong các trường hợp sau:</p>
+<ul>
+  <li><strong>Nhà cung cấp Dịch vụ:</strong> Chúng tôi có thể chia sẻ thông tin của bạn với các nhà cung cấp dịch vụ bên thứ ba hỗ trợ chúng tôi trong việc cung cấp dịch vụ của mình, chẳng hạn như nhà cung cấp dịch vụ lưu trữ, nhà cung cấp dịch vụ phân tích và nhà cung cấp dịch vụ hỗ trợ khách hàng. Các nhà cung cấp dịch vụ này có nghĩa vụ theo hợp đồng phải bảo vệ thông tin của bạn và chỉ sử dụng nó cho các mục đích mà chúng tôi tiết lộ cho họ.</li>
+  <li><strong>Tuân thủ Pháp luật:</strong> Chúng tôi có thể tiết lộ thông tin của bạn nếu được yêu cầu làm như vậy theo luật hoặc để đáp ứng một yêu cầu pháp lý hợp lệ, chẳng hạn như trát đòi hầu tòa hoặc lệnh của tòa án.</li>
+  <li><strong>Chuyển giao Doanh nghiệp:</strong> Trong trường hợp sáp nhập, mua lại hoặc bán toàn bộ hoặc một phần tài sản của chúng tôi, thông tin của bạn có thể được chuyển giao như một phần của giao dịch. Chúng tôi sẽ thông báo cho bạn qua email và/hoặc một thông báo nổi bật trên trang web của chúng tôi về bất kỳ thay đổi nào về quyền sở hữu hoặc việc sử dụng thông tin cá nhân của bạn, cũng như bất kỳ lựa chọn nào bạn có thể có liên quan đến thông tin cá nhân của bạn.</li>
+</ul>
+<p>Chúng tôi sẽ không bán, cho thuê hoặc trao đổi thông tin cá nhân của bạn cho các bên thứ ba cho mục đích tiếp thị của họ mà không có sự đồng ý rõ ràng của bạn.</p>
+
+<h2>5. Cookie và Công nghệ Theo dõi</h2>
+<p>Chúng tôi sử dụng cookie và các công nghệ theo dõi tương tự để thu thập thông tin về hành vi duyệt web và sở thích của bạn. Cookie là các tệp văn bản nhỏ được lưu trữ trên thiết bị của bạn khi bạn truy cập một trang web. Chúng tôi sử dụng cookie cho các mục đích sau:</p>
+<ul>
+  <li><strong>Để Phân tích Lưu lượng Truy cập Trang web:</strong> Chúng tôi sử dụng cookie để theo dõi cách người dùng tương tác với trang web của chúng tôi và để xác định các lĩnh vực cần cải thiện.</li>
+  <li><strong>Để Cá nhân hóa Trải nghiệm của Bạn:</strong> Chúng tôi sử dụng cookie để ghi nhớ sở thích của bạn và để cung cấp cho bạn trải nghiệm được cá nhân hóa hơn.</li>
+  <li><strong>Để Phục vụ Quảng cáo Được nhắm mục tiêu:</strong> Chúng tôi có thể sử dụng cookie để hiển thị quảng cáo có liên quan đến sở thích của bạn.</li>
+</ul>
+<p>Bạn có thể kiểm soát cookie thông qua cài đặt trình duyệt của mình. Bạn có thể chọn tắt hoàn toàn cookie hoặc nhận thông báo mỗi khi cookie được đặt. Tuy nhiên, xin lưu ý rằng việc tắt cookie có thể ảnh hưởng đến khả năng sử dụng một số tính năng nhất định của trang web của chúng tôi.</p>
+
+<h2>6. Quyền của Bạn</h2>
+<p>Bạn có các quyền sau liên quan đến thông tin cá nhân của bạn:</p>
+<ul>
+  <li><strong>Truy cập:</strong> Bạn có quyền truy cập thông tin cá nhân mà chúng tôi nắm giữ về bạn.</li>
+  <li><strong>Sửa chữa:</strong> Bạn có quyền yêu cầu chúng tôi sửa chữa bất kỳ thông tin cá nhân không chính xác hoặc không đầy đủ nào mà chúng tôi nắm giữ về bạn.</li>
+  <li><strong>Xóa:</strong> Bạn có quyền yêu cầu chúng tôi xóa thông tin cá nhân của bạn.</li>
+  <li><strong>Phản đối:</strong> Bạn có quyền phản đối việc xử lý thông tin cá nhân của bạn.</li>
+  <li><strong>Hạn chế:</strong> Bạn có quyền yêu cầu chúng tôi hạn chế việc xử lý thông tin cá nhân của bạn.</li>
+  <li><strong>Tính di động:</strong> Bạn có quyền nhận thông tin cá nhân của mình ở định dạng có cấu trúc, thường được sử dụng và có thể đọc được bằng máy và truyền dữ liệu đó cho một bộ điều khiển khác.</li>
+</ul>
+<p>Để thực hiện các quyền này, vui lòng liên hệ với chúng tôi theo địa chỉ <a href="mailto:info@edumindcare.com">info@edumindcare.com</a>. Chúng tôi sẽ trả lời yêu cầu của bạn trong một khung thời gian hợp lý.</p>
+
+<h2>7. Quyền riêng tư của Trẻ em</h2>
+<p>Edumindcare cam kết bảo vệ quyền riêng tư của trẻ em. Các dịch vụ của chúng tôi chủ yếu nhắm đến học sinh trung học phổ thông và chúng tôi thực hiện các biện pháp phòng ngừa bổ sung để bảo vệ thông tin cá nhân của người dùng dưới 16 tuổi.</p>
+<p>Chúng tôi không cố ý thu thập thông tin cá nhân từ trẻ em dưới 13 tuổi. Nếu bạn là cha mẹ hoặc người giám hộ và tin rằng con bạn đã cung cấp cho chúng tôi thông tin cá nhân, vui lòng liên hệ với chúng tôi ngay lập tức theo địa chỉ <a href="mailto:info@edumindcare.com">info@edumindcare.com</a>. Nếu chúng tôi biết rằng chúng tôi đã thu thập thông tin cá nhân từ một đứa trẻ dưới 13 tuổi mà không có sự đồng ý của phụ huynh, chúng tôi sẽ thực hiện các bước để xóa thông tin đó càng sớm càng tốt.</p>
+
+<h2>8. Thay đổi Chính sách Bảo mật này</h2>
+<p>Chúng tôi có thể cập nhật Chính sách Bảo mật này theo thời gian để phản ánh những thay đổi trong thực tiễn hoặc yêu cầu pháp lý của chúng tôi. Chúng tôi sẽ đăng bất kỳ thay đổi nào trên trang này và cập nhật ngày “Cập nhật lần cuối” ở đầu Chính sách Bảo mật này. Chúng tôi khuyến khích bạn xem xét Chính sách Bảo mật này định kỳ để luôn được thông báo về cách chúng tôi đang bảo vệ thông tin của bạn.</p>
+
+<h2>9. Liên hệ với Chúng tôi</h2>
+<p>Nếu bạn có bất kỳ câu hỏi hoặc thắc mắc nào về Chính sách Bảo mật này, vui lòng liên hệ với chúng tôi theo địa chỉ:</p>
+<p><strong>Edumindcare</strong><br/>
+<a href="mailto:info@edumindcare.com">info@edumindcare.com</a></p>
+
+  </div>
+</main>
+
+  <footer>
+    <div class="container" style="text-align:center">
+      <div class="footer-links">
+        <a href="index.html">Trang Chủ</a>
+        <a href="about.html">Phương Pháp</a>
+        <a href="games.html">Trò Chơi</a>
+        <a href="survey.html">Khảo Sát</a>
+        <a href="contact.html">Liên Hệ</a>
+      </div>
+      <div class="divider"></div>
+      <div class="footer-meta">
+        <p>Bản quyền © 2025 Edumindcare. Đã đăng ký Bản quyền.</p>
+        <div style="display:flex; gap:16px">
+          <a href="terms.html">Điều Khoản & Điều Kiện</a>
+          <a href="privacy.html">Chính Sách Bảo Mật</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    const nodes=[...document.querySelectorAll('.reveal')];
+    const io=new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target);} });
+    },{threshold:.16, rootMargin:'0px 0px -12% 0px'});
+    nodes.forEach(n=>io.observe(n));
+  </script>
+
+</body>
+</html>
