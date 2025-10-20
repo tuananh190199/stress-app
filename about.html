@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Edumindcare – Phương pháp của Chúng tôi</title>
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<style>
+  :root{
+    --brand:#3b82f6;
+    --ink:#111827;
+    --muted:#4b5563;
+    --bg:#ffffff;
+    --border:#e5e7eb;
+    --gray-50:#f8fafc;
+  }
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:#fff; color:var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  }
+  a{color:inherit; text-decoration:none}
+  img{max-width:100%; display:block}
+  .container{max-width:1260px; padding:0 24px; margin:0 auto}
+  .navbar{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.95); border-bottom:1px solid var(--border); backdrop-filter:saturate(160%) blur(8px)}
+  .nav-row{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 10px}
+  .brand{font-weight:900; letter-spacing:.12em; font-size:28px}
+  .links{display:flex; gap:28px; font-weight:700; font-size:15px}
+  /* Sections */
+  .section{padding:64px 0}
+  .grid{display:grid; grid-template-columns:1fr; gap:28px; align-items:center}
+  @media(min-width:1024px){ .grid{grid-template-columns:1.05fr .95fr; gap:48px} }
+  /* Headings */
+  .title-hero{font-size:40px; line-height:1.12; font-weight:900; letter-spacing:.01em}
+  @media(min-width:768px){ .title-hero{font-size:64px} }
+  .title{font-size:34px; line-height:1.18; font-weight:900}
+  @media(min-width:768px){ .title{font-size:48px} }
+  .lead{font-size:17px; color:var(--muted); line-height:1.75}
+  .hl{color:var(--brand)}
+  .underline{box-shadow: inset 0 -10px rgba(59,130,246,.25)}
+  /* Stats */
+  .stats{display:grid; grid-template-columns:1fr; gap:18px; margin-top:20px}
+  @media(min-width:740px){ .stats{grid-template-columns:1fr 1fr} }
+  .stat b{display:block; font-size:40px}
+  /* Media */
+  .frame{border:1px solid var(--border); border-radius:16px; overflow:hidden}
+  .frame>img{width:100%; height:100%; object-fit:cover}
+  .tall{height:520px}
+  @media(max-width:1023.98px){ .tall{height:360px} }
+  /* Bullets */
+  ul.clean{list-style:none; padding:0; margin:16px 0 0; display:grid; gap:12px}
+  ul.clean li{display:flex; gap:12px}
+  .dot{width:18px; height:18px; border-radius:50%; background:#10b981; margin-top:4px}
+  /* Footer like homepage */
+  footer{padding:32px 0; border-top:1px solid var(--border); background:var(--bg)}
+  .footer-links{display:flex; gap:22px; justify-content:center; flex-wrap:wrap; font-weight:700; font-size:14px}
+  .footer-meta{display:flex; justify-content:space-between; align-items:center; gap:16px; max-width:820px; margin:0 auto; color:var(--muted); font-size:14px}
+  .divider{height:1px; background:var(--border); max-width:820px; margin:12px auto}
+  /* Smooth reveal 2.0 */
+  .reveal{opacity:0; transform:translateY(14px) scale(.997); filter:blur(3px);
+    transition:
+      opacity .7s cubic-bezier(.25,.9,.25,1),
+      transform .7s cubic-bezier(.25,.9,.25,1),
+      filter .7s cubic-bezier(.25,.9,.25,1);
+    will-change:opacity,transform,filter;
+  }
+  .reveal.in-view{opacity:1; transform:none; filter:none}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{transition:none; transform:none; filter:none; opacity:1}
+  }
+</style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <nav class="container nav-row">
+      <a class="brand" href="index.html">Edumindcare</a>
+      <div class="links">
+        <a style="text-decoration:underline" href="about.html" aria-current="page">Phương pháp của Chúng tôi</a>
+        <a href="games.html">Trò Chơi Giảm Căng Thẳng</a>
+        <a href="survey.html">Khảo Sát</a>
+        <a href="contact.html">Liên Hệ</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Section 1 -->
+  <section class="section">
+    <div class="container grid">
+      <div class="reveal">
+        <h1 class="title-hero">
+          Cách Mạng Hóa Chăm Sóc Sức Khỏe Tinh Thần
+          với <span class="hl">AI-Driven Insights</span>
+        </h1>
+        <p class="lead" style="margin-top:14px">
+          Tại Edumindcare, chúng tôi tận dụng sức mạnh của trí tuệ nhân tạo để chuyển đổi việc đánh giá sức khỏe tinh thần cho học sinh trung học.
+          Các thuật toán AI của chúng tôi phân tích các kiểu hành vi và các chỉ số cảm xúc để phát hiện các dấu hiệu sớm của rối loạn sức khỏe tinh thần,
+          cho phép can thiệp kịp thời và hỗ trợ cá nhân hóa.
+        </p>
+        <div class="stats">
+          <div class="stat">
+            <b>95 %</b>
+            <p class="lead">Độ chính xác trong việc phát hiện sớm các lo ngại tiềm ẩn về sức khỏe tinh thần, đảm bảo hỗ trợ kịp thời.</p>
+          </div>
+          <div class="stat">
+            <b>80 %</b>
+            <p class="lead">Cải thiện các đề xuất cá nhân hóa để giảm căng thẳng và tăng cường sức khỏe tinh thần.</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal frame tall">
+        <img alt="Minh họa bộ não & mạng lưới dữ liệu"
+             src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=1600&q=80"
+             onerror="this.src='https://images.unsplash.com/photo-1541534401786-2077eed87a3b?auto=format&fit=crop&w=1600&q=80'">
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2 -->
+  <section class="section" style="padding-top:24px">
+    <div class="container grid">
+      <div class="reveal frame tall">
+        <img alt="Cận cảnh não bộ kết nối ánh sáng"
+             src="https://images.unsplash.com/photo-1549144511-f099e773c147?auto=format&fit=crop&w=1600&q=80"
+             onerror="this.src='https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=1600&q=80'">
+      </div>
+      <div class="reveal">
+        <h2 class="title">
+          <span style="box-shadow: inset 0 -10px rgba(59,130,246,.25)">AI</span> Xác Định Các Dấu Hiệu Sớm và
+          Phân Loại Mức Độ Căng Thẳng
+        </h2>
+        <p class="lead" style="margin-top:14px">
+          Edumindcare sử dụng các thuật toán AI tiên tiến để phân tích các điểm dữ liệu khác nhau, bao gồm các kiểu hành vi và các chỉ số cảm xúc,
+          để phát hiện các dấu hiệu sớm của rối loạn sức khỏe tinh thần ở học sinh. Hệ thống của chúng tôi phân loại mức độ căng thẳng để
+          cung cấp các đề xuất cá nhân hóa về quản lý căng thẳng và các hoạt động phù hợp, chẳng hạn như các trò chơi giảm căng thẳng.
+        </p>
+        <ul class="clean">
+          <li><span class="dot"></span><span class="lead">Phân Tích Dữ Liệu: Thuật toán AI phân tích dữ liệu học sinh để tìm các kiểu mẫu.</span></li>
+          <li><span class="dot"></span><span class="lead">Phát Hiện Sớm: Xác định sớm các lo ngại tiềm ẩn về sức khỏe tinh thần.</span></li>
+          <li><span class="dot"></span><span class="lead">Phân Loại Căng Thẳng: Phân loại mức độ căng thẳng để hỗ trợ cá nhân hóa.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (giống trang chủ) -->
+  <footer>
+    <div class="container" style="text-align:center">
+      <div class="footer-links">
+        <a href="index.html">Trang Chủ</a>
+        <a href="about.html" aria-current="page" style="text-decoration:underline">Phương Pháp</a>
+        <a href="games.html">Trò Chơi</a>
+        <a href="survey.html">Khảo Sát</a>
+        <a href="contact.html">Liên Hệ</a>
+      </div>
+      <div class="divider"></div>
+      <div class="footer-meta">
+        <p>Bản quyền © 2025 Edumindcare. Đã đăng ký Bản quyền.</p>
+        <div style="display:flex; gap:16px">
+          <a href="terms.html">Điều Khoản & Điều Kiện</a>
+          <a href="privacy.html">Chính Sách Bảo Mật</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  // Smoother + staggered reveal
+  const nodes=[...document.querySelectorAll('.reveal')];
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const i=nodes.indexOf(e.target);
+        setTimeout(()=>e.target.classList.add('in-view'), (i%6)*80); // stagger 0-400ms
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:.16, rootMargin:'0px 0px -12% 0px'});
+  nodes.forEach(n=>io.observe(n));
+</script>
+</body>
+</html>
