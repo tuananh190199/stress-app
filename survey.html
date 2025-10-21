@@ -229,6 +229,61 @@
   .opt.opt-5{grid-template-columns:repeat(5,1fr)}
   .opt label{padding:14px 14px; font-size:16px}
   .opt label span.value{min-width:36px; display:inline-block; text-align:center}
+
+  /* === Hero refresh: centered title + cheerful background === */
+  .hero{
+    padding:56px 0 24px;
+    background:
+      radial-gradient(1200px 500px at 0% 0%, rgba(59,130,246,.12), transparent 60%),
+      radial-gradient(900px 400px at 100% 0%, rgba(16,185,129,.12), transparent 60%),
+      radial-gradient(1200px 520px at 50% 100%, rgba(250,204,21,.14), transparent 60%),
+      linear-gradient(180deg, #ffffff, #f8fafc);
+  }
+  .hero .container{
+    max-width: 960px;
+    text-align:center;
+  }
+  .hero h1{
+    margin: 0 0 10px;
+    font-weight: 900;
+    letter-spacing: .01em;
+  }
+  .hero .subtle{
+    color:#475569;
+    font-size:17px;
+    margin:0 auto;
+  }
+
+
+  /* Right-aligned hero copy but centered block */
+  .hero-copy{
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: right;
+  }
+
+
+  /* Two-line right-shifted hero text */
+  p%;
+    max-width: 960px;
+    margin-left: auto;  /* push block to the right while staying centered within page grid */
+    text-align: right;
+    line-height: 1.25;
+  }
+  .hero-copy-right h1{
+    margin: 0 0 .35rem 0;
+    font-size: clamp(28px, 4.6vw, 56px);
+    font-weight: 800;
+    letter-spacing: 0.2px;
+  
+    white-space: nowrap;}
+  .hero-copy-right .subtitle{
+    margin: 0;
+    font-size: clamp(14px, 1.4vw, 18px);
+    opacity: 0.9;
+  
+    white-space: nowrap;}
+
 </style>
 </head>
 <body>
@@ -245,10 +300,7 @@
   </header>
 
 <section class="hero">
-  <div class="container">
-    <h1>Làm Khảo Sát: PHQ‑9 • GAD‑7 • PSS‑10</h1>
-    <p class="subtle">Điền đầy đủ rồi bấm <b>Kiểm tra</b> để xem kết quả dự đoán (không hiển thị điểm). Kết quả chỉ mang tính tham khảo.</p>
-  </div>
+  <div class="container"><div class="hero-copy-right"><h1>KHẢO SÁT SỨC KHỎE TÂM THẦN HỌC</h1><p class="subtitle">Ứng dụng trí tuệ nhân tạo (AI) trong phát hiện sớm các dấu hiệu rối loạn sức khỏe tâm thần</p></div></div>
 </section>
 
 <main class="container">
