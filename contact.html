@@ -52,13 +52,28 @@
   .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px;
        padding:12px 18px; border-radius:12px; font-weight:800; font-size:16px;
        background:#fff; color:#111; border:1.5px solid rgba(59,130,246,.5)}
+
+  /* Standardized logo sizing (like index) */
+  .brand .logo{height:56px; width:auto; object-fit:contain; display:block}
+  @media(min-width:900px){ .brand .logo{height:68px} }
+
+  /* ===== Contact form: error & success popup (match index) ===== */
+  .input.error{border-color:#ef4444 !important; box-shadow:0 0 0 3px rgba(239,68,68,.15) !important}
+  .err-text{color:#ef4444; font-size:13px; margin-top:6px; display:none}
+  .err-text.show{display:block}
+  .modal{position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(2,6,23,.55); z-index:1000; padding:18px}
+  .modal.show{display:flex}
+  .modal-card{background:#fff; border-radius:14px; border:1px solid var(--border); max-width:520px; width:100%; padding:20px; box-shadow:0 20px 60px rgba(2,6,23,.25); text-align:center}
+  .modal-card h4{margin:4px 0 8px; font-size:20px; font-weight:800}
+  .modal-card p{color:var(--muted); margin:0 0 12px}
+
 </style>
 </head>
 <body>
 
   <header class="navbar">
     <nav class="container nav-row">
-      <a class="brand" href="index.html"><span class="brand-dot" aria-hidden="true"></span> <span>Edumindcare</span></a>
+      <a class="brand" href="index.html"><img class="logo" src="logo.jpg" alt="Logo Trần Đại Nghĩa"><span>Edumindcare</span></a>
       <div class="links">
         <a href="about.html">Phương pháp của Chúng tôi</a>
         <a href="games.html">Trò Chơi Giảm Căng Thẳng</a>
@@ -78,18 +93,42 @@
     <div class="reveal">
       <h1 class="title-hero">Liên hệ</h1>
       <p class="lead" style="margin-top:6px">Vui lòng điền vào mẫu bên dưới để liên hệ hoặc đặt lịch hẹn.</p>
-      <form style="display:grid; gap:12px; margin-top:14px">
-        <div><label style="font-size:14px; font-weight:700">Tên</label><input class="input" placeholder="Tên của bạn"></div>
-        <div><label style="font-size:14px; font-weight:700">Email</label><input type="email" class="input" placeholder="Email"></div>
-        <div><label style="font-size:14px; font-weight:700">Tin nhắn</label><textarea rows="6" class="input" placeholder="Nội dung liên hệ"></textarea></div>
-        <label style="font-size:14px; display:flex; align-items:center; gap:8px"><input type="checkbox"> Tôi đồng ý với Điều khoản</label>
-        <button type="button" class="btn" onclick="location.href='thanks.html'">Gửi</button>
+      <form id="contactForm" style="display:grid; gap:12px; margin-top:14px">
+        <div>
+          <label for="name" style="font-size:14px; font-weight:700">Tên</label>
+          <input id="name" class="input" placeholder="Enter your name">
+          <div class="err-text" id="err-name">Vui lòng nhập tên.</div>
+        </div>
+        <div>
+          <label for="email" style="font-size:14px; font-weight:700">Email</label>
+          <input id="email" type="email" class="input" placeholder="Enter your email">
+          <div class="err-text" id="err-email">Vui lòng nhập email hợp lệ.</div>
+        </div>
+        <div>
+          <label for="message" style="font-size:14px; font-weight:700">Tin nhắn</label>
+          <textarea id="message" rows="6" class="input" placeholder="Type your message"></textarea>
+          <div class="err-text" id="err-message">Vui lòng nhập nội dung tin nhắn.</div>
+        </div>
+        <label for="agree" style="font-size:14px; display:flex; align-items:center; gap:8px">
+          <input id="agree" type="checkbox"> Tôi đồng ý với Điều khoản
+        </label>
+        <div class="err-text" id="err-agree" style="margin-top:-6px">Bạn cần đồng ý với Điều khoản.</div>
+        <button type="submit" class="btn">Gửi</button>
       </form>
     </div>
   </div>
 </section>
 
-  <footer>
+  
+  <div id="thanksModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-card">
+      <h4>Cảm ơn bạn đã liên hệ!</h4>
+      <p>Chúng tôi đã nhận được thông tin và sẽ phản hồi cho bạn sớm nhất.</p>
+      <button id="closeThanks" class="btn">Đóng</button>
+    </div>
+  </div>
+
+<footer>
     <div class="container" style="text-align:center">
       <div class="footer-links">
         <a href="index.html">Trang Chủ</a>
@@ -114,6 +153,62 @@
       entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target);} });
     },{threshold:.16, rootMargin:'0px 0px -12% 0px'});
     nodes.forEach(n=>io.observe(n));
+  </script>
+
+
+  <script>
+    // ===== Contact form validation & thanks popup (same as index) =====
+    (function(){
+      const form = document.getElementById('contactForm');
+      if(!form) return;
+      const name = document.getElementById('name');
+      const email = document.getElementById('email');
+      const msg = document.getElementById('message');
+      const agree = document.getElementById('agree');
+      const modal = document.getElementById('thanksModal');
+      const closeBtn = document.getElementById('closeThanks');
+
+      function setErr(el, errEl, cond){
+        if(cond){
+          el.classList.remove('error');
+          errEl.classList.remove('show');
+        }else{
+          el.classList.add('error');
+          errEl.classList.add('show');
+        }
+      }
+      function emailOk(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        let ok = true;
+
+        setErr(name, document.getElementById('err-name'), name.value.trim().length>0); ok = ok && name.value.trim().length>0;
+        const eok = emailOk(email.value.trim());
+        setErr(email, document.getElementById('err-email'), eok); ok = ok && eok;
+        setErr(msg, document.getElementById('err-message'), msg.value.trim().length>0); ok = ok && msg.value.trim().length>0;
+
+        const agreeOk = agree.checked;
+        document.getElementById('err-agree').classList.toggle('show', !agreeOk);
+        ok = ok && agreeOk;
+
+        if(!ok){
+          const firstErr = form.querySelector('.err-text.show');
+          if(firstErr){ firstErr.scrollIntoView({behavior:'smooth', block:'center'}); }
+          return;
+        }
+
+        modal.classList.add('show'); modal.setAttribute('aria-hidden','false');
+        form.reset();
+      });
+
+      function closeModal(){
+        modal.classList.remove('show'); modal.setAttribute('aria-hidden','true');
+      }
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
+      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && modal.classList.contains('show')) closeModal(); });
+    })();
   </script>
 
 </body>

@@ -46,15 +46,42 @@
     transition:opacity .7s cubic-bezier(.25,.9,.25,1), transform .7s cubic-bezier(.25,.9,.25,1), filter .7s cubic-bezier(.25,.9,.25,1)}
   .reveal.in-view{opacity:1; transform:none; filter:none}
   @media (prefers-reduced-motion: reduce){ .reveal{transition:none; transform:none; filter:none; opacity:1} }
+
+  /* Standardized logo sizing (like index) */
+  .brand .logo{height:56px; width:auto; object-fit:contain; display:block}
+  @media(min-width:900px){ .brand .logo{height:68px} }
+</style>
+<style>
+/* Nút cầu vồng 7 sắc */
+.rainbow-btn{
+  display:inline-block;
+  font-weight:900;
+  padding:14px 22px;
+  border-radius:14px;
+  color:#fff;
+  border:0;
+  background:linear-gradient(90deg,#ff0000,#ff7f00,#ffff00,#00ff00,#00ffff,#0000ff,#8b00ff);
+  background-size:400% 100%;
+  box-shadow:0 10px 20px rgba(0,0,0,.18), 0 6px 10px rgba(0,0,0,.1);
+  transition:transform .15s ease, filter .2s ease;
+  animation:rainbow-slide 4s linear infinite;
+}
+@keyframes rainbow-slide{0%{background-position:0% 50%}100%{background-position:100% 50%}}
+.rainbow-btn:hover{transform:translateY(-1px); filter:saturate(1.05)}
+.rainbow-btn:active{transform:translateY(0)}
+.rainbow-btn:focus-visible{outline:3px solid rgba(255,255,255,.95); outline-offset:3px}
+@media (prefers-reduced-motion: reduce){
+  .rainbow-btn{animation:none}
+}
 </style>
 </head>
 <body>
 
   <header class="navbar">
     <nav class="container nav-row">
-      <a class="brand" href="index.html"><span class="brand-dot" aria-hidden="true"></span> <span>Edumindcare</span></a>
+      <a class="brand" href="index.html"><img class="logo" src="logo.jpg" alt="Logo Trần Đại Nghĩa"><span>Edumindcare</span></a>
       <div class="links">
-        <a href="about.html">Phương pháp của Chúng tôi</a>
+        <a href="gamelist.html">Phương pháp của Chúng tôi</a>
         <a href="games.html" aria-current="page">Trò Chơi Giảm Căng Thẳng</a>
         <a href="survey.html">Khảo Sát</a>
         <a href="contact.html">Liên Hệ</a>
@@ -93,7 +120,7 @@
       </div>
     </div>
     <div class="reveal" style="text-align:center; margin-top:26px">
-      <a href="about.html" style="font-weight:800; border:1.5px solid rgba(59,130,246,.5); padding:12px 18px; border-radius:12px">Tìm hiểu thêm</a>
+      <a href="gamelist.html" style="font-weight:800; border:1.5px solid rgba(59,130,246,.5); padding:12px 18px; border-radius:12px" class="neon-btn rainbow-btn"><span class="rainbow-text">Danh sách trò chơi</span></a>
     </div>
   </div>
 </section>
@@ -102,8 +129,8 @@
     <div class="container" style="text-align:center">
       <div class="footer-links">
         <a href="index.html">Trang Chủ</a>
-        <a href="about.html">Phương Pháp</a>
-        <a href="games.html">Trò Chơi</a>
+        <a href="gamelist.html">Phương Pháp</a>
+        <a href="gamelist.html">Trò Chơi</a>
         <a href="survey.html">Khảo Sát</a>
         <a href="contact.html">Liên Hệ</a>
       </div>
@@ -127,3 +154,136 @@
 
 </body>
 </html>
+
+<style>
+/* Override: Gray background, rainbow gradient text */
+.rainbow-btn{
+  background:#f2f3f7 !important;
+  color:#111 !important;
+  border:1px solid rgba(0,0,0,.06);
+  box-shadow:0 10px 20px rgba(0,0,0,.12), 0 6px 10px rgba(0,0,0,.06);
+}
+.rainbow-btn:hover{filter:none !important}
+.rainbow-text{
+  background:linear-gradient(90deg,#ff0000,#ff7f00,#ffff00,#00ff00,#00ffff,#0000ff,#8b00ff);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  font-weight:900;
+  letter-spacing:.2px;
+  text-shadow:none;
+  background-size:200% 100%;
+  animation:rainbow-text-slide 4s linear infinite;
+}
+@keyframes rainbow-text-slide{0%{background-position:0% 50%}100%{background-position:100% 50%}}
+</style>
+
+<style>
+/* Final override: black background for better contrast */
+.rainbow-btn{
+  background:#0b0b0b !important;
+  border:1px solid #222 !important;
+  box-shadow:0 12px 24px rgba(0,0,0,.45), 0 6px 12px rgba(0,0,0,.35) !important;
+}
+.rainbow-btn:hover{transform:translateY(-1px) !important}
+.rainbow-btn:focus-visible{outline:3px solid #fff; outline-offset:3px}
+/* Stronger, brighter rainbow text with subtle glow */
+.rainbow-text{
+  background:linear-gradient(90deg,#ff1a1a,#ff8c1a,#ffee33,#33ff66,#33eeff,#3385ff,#b233ff);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  font-weight:900;
+  letter-spacing:.3px;
+  text-shadow:0 0 8px rgba(255,255,255,.12), 0 2px 6px rgba(0,0,0,.6);
+  background-size:250% 100%;
+  animation:rainbow-text-slide 4s linear infinite;
+}
+</style>
+
+<style>
+/* Override: medium gray background + larger font size for readability */
+.rainbow-btn{
+  background:#2b2b2b !important; /* medium gray */
+  border:1px solid #3a3a3a !important;
+  box-shadow:0 12px 24px rgba(0,0,0,.35), 0 6px 12px rgba(0,0,0,.25) !important;
+  font-size:20px !important;
+  padding:16px 26px !important;
+}
+/* Slightly stronger text glow for contrast on gray */
+.rainbow-text{
+  text-shadow:0 0 10px rgba(255,255,255,.12), 0 2px 6px rgba(0,0,0,.5);
+}
+@media (max-width: 480px){
+  .rainbow-btn{font-size:18px !important; padding:14px 22px !important;}
+}
+</style>
+
+<style>
+/* Neon green button inspired style */
+.neon-btn{
+  position:relative;
+  display:inline-block;
+  padding:16px 28px;
+  border-radius:14px;
+  background:#0e0f11; /* dark base */
+  border:1px solid #1aff5c;
+  text-decoration:none;
+  color:#fff;
+  font-weight:900;
+  letter-spacing:.3px;
+  box-shadow:
+    0 0 0 1px rgba(0,255,120,.25),
+    0 8px 18px rgba(0,0,0,.45),
+    0 0 22px rgba(0,255,120,.55),
+    inset 0 2px 0 rgba(255,255,255,.12),
+    inset 0 -6px 12px rgba(0,255,120,.25);
+  transition:transform .15s ease, box-shadow .2s ease, filter .2s ease;
+  overflow:hidden;
+}
+/* glossy top */
+.neon-btn::before{
+  content:"";
+  position:absolute;
+  left:3px; right:3px; top:3px; height:50%;
+  background:linear-gradient(to bottom, rgba(255,255,255,.35), rgba(255,255,255,0));
+  border-radius:12px;
+  pointer-events:none;
+}
+/* inner neon bar near bottom */
+.neon-btn::after{
+  content:"";
+  position:absolute;
+  left:10px; right:10px; bottom:10px; height:10px;
+  background:radial-gradient(closest-side, rgba(0,255,120,.9), rgba(0,255,120,0));
+  border-radius:999px;
+  filter:blur(0.5px);
+  box-shadow:0 0 18px rgba(0,255,120,.8), inset 0 -4px 10px rgba(0,0,0,.3);
+  pointer-events:none;
+}
+.neon-btn:hover{
+  transform:translateY(-1px);
+  box-shadow:
+    0 0 0 1px rgba(0,255,120,.35),
+    0 10px 22px rgba(0,0,0,.5),
+    0 0 28px rgba(0,255,140,.75),
+    inset 0 2px 0 rgba(255,255,255,.12),
+    inset 0 -6px 14px rgba(0,255,140,.32);
+  filter:saturate(1.05);
+}
+.neon-btn:active{ transform:translateY(0) }
+.neon-btn:focus-visible{ outline:3px solid #fff; outline-offset:3px }
+
+/* Keep the rainbow text for label */
+.rainbow-text{
+  background:linear-gradient(90deg,#ff1a1a,#ff8c1a,#ffee33,#33ff66,#33eeff,#3385ff,#b233ff);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  font-weight:900;
+  text-shadow:none;
+  background-size:250% 100%;
+  animation:rainbow-text-slide 4s linear infinite;
+}
+@keyframes rainbow-text-slide{0%{background-position:0% 50%}100%{background-position:100% 50%}}
+</style>

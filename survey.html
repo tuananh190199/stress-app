@@ -284,12 +284,57 @@
   
     white-space: nowrap;}
 
+
+/* === Inline Whack-a-mole preview + modal === */
+.game{background:#fff; border:1px solid var(--border); border-radius:16px; overflow:hidden; padding:0}
+.game .thumb{width:100%; aspect-ratio:16/9; display:block; border-bottom:1px solid var(--border)}
+.game .body{padding:12px 14px 16px}
+.game h5{margin:0 0 6px; font-size:16px}
+.game p{margin:0 0 10px; color:var(--muted); font-size:13px}
+.btn.small{padding:8px 12px; font-size:14px; border-radius:10px}
+
+/* Preview art */
+.thumb.whack{background:linear-gradient(135deg,#dbeafe,#fef9c3); position:relative}
+.thumb.whack::before{content:""; position:absolute; inset:auto 12% 8% 12%; height:55%; border-radius:16px; background:linear-gradient(180deg,#fde68a,#f59e0b); box-shadow:0 8px 16px rgba(245,158,11,.25)}
+
+/* Modal */
+.modal{position:fixed; inset:0; background:rgba(2,6,23,.5); display:none; z-index:1000; align-items:center; justify-content:center; padding:18px}
+.modal.show{display:flex}
+.modal-dialog{width:min(880px,95vw); background:#fff; border-radius:16px; overflow:hidden; border:1px solid var(--border); box-shadow:0 20px 60px rgba(2,6,23,.35)}
+.modal-header{display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px solid var(--border)}
+.modal-body{padding:16px}
+.modal-close{background:white; border:1px solid var(--border); border-radius:10px; padding:6px 10px; cursor:pointer}
+.game-wrap{padding:0}
+.game-wrap>*{width:100%}
+
+/* Whack-a-mole (3x3) */
+.wam-wrap{display:flex;flex-direction:column;align-items:center;gap:10px}
+.wam-hud{display:flex;gap:12px;align-items:center;font-weight:700}
+.wam-hud .pill{background:#ecfeff;color:#0369a1;padding:4px 10px;border-radius:999px}
+.wam-board{width:min(92vw,420px);aspect-ratio:1/1;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:10px;border-radius:16px;background:#f8fafc;border:1px solid var(--border)}
+.wam-hole{position:relative;border-radius:14px;background:#ffffff;box-shadow:inset 0 0 0 1px var(--border),0 6px 14px rgba(15,23,42,.08);overflow:hidden;cursor:pointer;user-select:none}
+.wam-mole{position:absolute;inset:auto 12% 6% 12%;height:58%;border-radius:16px;background:linear-gradient(180deg,#fde68a,#f59e0b);display:none;box-shadow:0 8px 16px rgba(245,158,11,.25)}
+.wam-hole.active .wam-mole{display:block}
+.wam-ctrl{display:flex;gap:10px;margin-top:6px}
+.wam-ctrl .btn{padding:10px 14px}
+
+
+  /* ===== Brand logo (file-based) ===== */
+  .brand{display:flex; align-items:center; gap:12px; font-weight:800}
+  .brand .logo{height:56px; width:auto; object-fit:contain; display:block}
+  @media(min-width:900px){ .brand .logo{height:68px} }
+
+
+footer{padding:32px 0; border-top:1px solid var(--border)}
+.footer-links{display:flex; gap:22px; justify-content:center; flex-wrap:wrap; font-weight:700; font-size:14px}
+.divider{height:1px; background:var(--border); max-width:820px; margin:12px auto}
+.footer-meta{display:flex; justify-content:space-between; align-items:center; gap:16px; max-width:820px; margin:0 auto; color:var(--muted); font-size:14px}
 </style>
 </head>
 <body>
 <header class="navbar" id="navbar">
     <nav class="container nav-row">
-      <a href="index.html" class="brand">Edumindcare</a>
+      <a href="index.html" class="brand"><img class="logo" src="logo.jpg" alt="Logo Trần Đại Nghĩa"><span>Edumindcare</span></a>
       <div class="nav-links">
         <a href="about.html">Phương pháp của Chúng tôi</a>
         <a href="games.html">Trò Chơi Giảm Căng Thẳng</a>
@@ -316,12 +361,6 @@
     <div id="gad-qs"></div>
   </div>
 
-  <div id="pss" class="card">
-    <h2 class="section-title">PSS‑10 (Căng thẳng — 1 tháng qua)</h2>
-    <div class="subtle">Chọn một phương án cho mỗi câu hỏi.</div>
-    <div id="pss-qs"></div>
-  </div>
-
   <div style="display:flex; gap:12px; margin:8px 0 16px">
     <button id="calcBtn" class="btn">Kiểm tra</button>
     <button id="resetBtn" class="btn secondary">Xóa lựa chọn</button>
@@ -337,28 +376,41 @@
     <div id="games" class="games">
       <h4 style="margin:12px 0 6px; font-size:18px">Gợi ý trò chơi & hoạt động</h4>
       <div id="games-grid" class="game-grid"></div>
-      <div style="margin-top:12px"><a class="btn" href="games.html">Xem thêm trò chơi</a></div>
+      <div style="margin-top:12px"><a class="btn" href="gamelist.html">Xem thêm trò chơi</a></div>
     </div>
   </div>
+
+<div id="gameModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <h3 id="modalTitle" style="margin:0; font-size:18px; font-weight:800">Chơi</h3>
+      <button class="modal-close" id="modalClose">Đóng</button>
+    </div>
+    <div class="modal-body"><div id="gameMount" class="game-wrap"></div></div>
+  </div>
+</div>
+
 </main>
 
-<footer class="section" style="padding:32px 0; border-top:1px solid var(--border)">
-    <div class="container" style="text-align:center">
-      <div style="display:flex; gap:22px; justify-content:center; flex-wrap:wrap; font-weight:700; font-size:14px">
-        <a href="about.html">Phương Pháp Của Chúng Tôi</a>
-        <a href="games.html">Trò Chơi Giải Tỏa Căng Thẳng</a>
-        <a href="contact.html">Liên Hệ</a>
-      </div>
-      <div class="divider" style="max-width:820px; margin:12px auto"></div>
-      <div style="display:flex; justify-content:space-between; align-items:center; gap:16px; max-width:820px; margin:0 auto; color:var(--muted); font-size:14px">
-        <p>Bản quyền © 2025 Edumindcare. Đã đăng ký Bản quyền.</p>
-        <div style="display:flex; gap:16px">
-          <a href="terms.html">Điều Khoản và Điều Kiện</a>
-          <a href="privacy.html">Chính Sách Bảo Mật</a>
-        </div>
+<footer>
+  <div class="container" style="text-align:center">
+    <div class="footer-links">
+      <a href="index.html">Trang Chủ</a>
+      <a href="about.html">Phương Pháp</a>
+      <a href="gamelist.html">Trò Chơi</a>
+      <a href="survey.html">Khảo Sát</a>
+      <a href="contact.html">Liên Hệ</a>
+    </div>
+    <div class="divider"></div>
+    <div class="footer-meta">
+      <p>Bản quyền © 2025 Edumindcare. Đã đăng ký Bản quyền.</p>
+      <div style="display:flex; gap:16px">
+        <a href="terms.html">Điều Khoản & Điều Kiện</a>
+        <a href="privacy.html">Chính Sách Bảo Mật</a>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
 
 <script>
 // Data
@@ -382,20 +434,7 @@ const GAD = [
   "Bạn dễ cáu hoặc dễ khó chịu hơn bình thường, phản ứng mạnh trước chuyện nhỏ?",
   "Bạn lo sợ điều xấu sắp xảy ra, hay dự cảm bất an liên tục?"
 ];
-const PSS = [
-  "Trong 1 tháng qua, bạn có bị bất ngờ hoặc bối rối bởi những việc ngoài dự kiến?",
-  "Bạn cảm thấy khó kiểm soát những việc quan trọng trong cuộc sống?",
-  "Bạn cảm thấy căng thẳng, áp lực vì nhiều chuyện xảy ra đồng thời?",
-  "Bạn cảm thấy tự tin vào khả năng giải quyết vấn đề của bản thân?",
-  "Mọi việc diễn ra theo ý bạn hoặc trong tầm kiểm soát hợp lý?",
-  "Bạn không thể đối phó nổi với tất cả những việc bạn phải làm?",
-  "Bạn kiểm soát được sự khó chịu/khó khăn nảy sinh trong cuộc sống?",
-  "Bạn kiểm soát tốt hầu hết các việc đang diễn ra xung quanh mình?",
-  "Bạn tức giận vì những việc ngoài tầm kiểm soát của mình?",
-  "Bạn cảm thấy các khó khăn chồng chất đến mức không vượt qua nổi?"
-];
 const LABELS_04 = ["Không hề","Vài ngày","Hơn nửa số ngày","Gần như mỗi ngày"];
-const LABELS_05 = ["Không bao giờ","Hiếm khi","Thỉnh thoảng","Khá thường xuyên","Rất thường xuyên"];
 
 function renderScale(container, list, name, labels){
   list.forEach((text, i)=>{
@@ -419,7 +458,6 @@ function renderScale(container, list, name, labels){
 }
 renderScale(document.getElementById('phq-qs'), PHQ, 'phq', LABELS_04);
 renderScale(document.getElementById('gad-qs'), GAD, 'gad', LABELS_04);
-renderScale(document.getElementById('pss-qs'), PSS, 'pss', LABELS_05);
 
 function getSum(prefix, count){
   let sum=0, answered=0;
@@ -429,7 +467,6 @@ function getSum(prefix, count){
   }
   return {sum, answered};
 }
-function reversePSS(v){ return [4,3,2,1,0][v]; }
 
 function interpretPHQLabel(s){
   if(s<=4) return {label:'không/nhẹ', cls:'good'};
@@ -443,11 +480,6 @@ function interpretGADLabel(s){
   if(s<=9) return {label:'nhẹ', cls:'good'};
   if(s<=14) return {label:'trung bình', cls:'warn'};
   return {label:'nặng', cls:'bad'};
-}
-function interpretPSSLabel(s){
-  if(s<=13) return {label:'căng thẳng thấp', cls:'good'};
-  if(s<=26) return {label:'căng thẳng vừa', cls:'warn'};
-  return {label:'căng thẳng cao', cls:'bad'};
 }
 
 const GAMES_LOW=[
@@ -497,17 +529,9 @@ function validateAll(){
 function computeLabels(){
   const phq=getSum('phq',PHQ.length);
   const gad=getSum('gad',GAD.length);
-  let pssSum=0;
-  for(let i=0;i<PSS.length;i++){
-    const chk=document.querySelector(`input[name="pss-${i}"]:checked`);
-    let v=+chk.value;
-    if([3,4,6,7].includes(i)) v=[4,3,2,1,0][v];
-    pssSum+=v;
-  }
   return {
     phq:interpretPHQLabel(phq.sum),
     gad:interpretGADLabel(gad.sum),
-    pss:interpretPSSLabel(pssSum),
     suThought:+document.querySelector('input[name="phq-8"]:checked').value
   };
 }
@@ -516,7 +540,7 @@ document.getElementById('calcBtn').addEventListener('click',()=>{
   if(!validateAll()) return;
   const lv=computeLabels();
   const badges=document.getElementById('badges'); badges.innerHTML="";
-  const map={PHQ:lv.phq,GAD:lv.gad,PSS:lv.pss};
+  const map={PHQ:lv.phq,GAD:lv.gad};
   Object.keys(map).forEach(k=>{
     const s=document.createElement('span'); s.className='pill '+map[k].cls; s.textContent=`${k}: ${map[k].label}`; badges.appendChild(s);
   });
@@ -524,8 +548,8 @@ document.getElementById('calcBtn').addEventListener('click',()=>{
   if(lv.suThought>=1){ safety.style.display='block'; safety.innerHTML="<b>Lưu ý an toàn:</b> Nếu có ý nghĩ tự hại, hãy tìm trợ giúp ngay (115 / cơ sở y tế / người tin cậy)."; }
   else { safety.style.display='none'; safety.innerHTML=""; }
 
-  const severe=(lv.phq.cls==='bad')||(lv.gad.cls==='bad')||(lv.pss.cls==='bad');
-  const moderate=(lv.phq.cls==='warn')||(lv.gad.cls==='warn')||(lv.pss.cls==='warn');
+  const severe=(lv.phq.cls==='bad')||(lv.gad.cls==='bad');
+  const moderate=(lv.phq.cls==='warn')||(lv.gad.cls==='warn');
   const list= severe?pickFour(GAMES_HIGH): (moderate?pickFour(GAMES_MED):pickFour(GAMES_LOW));
 
   const grid=document.getElementById('games-grid'); grid.innerHTML="";
@@ -549,6 +573,118 @@ document.addEventListener('change',e=>{
     if(q) q.classList.remove('invalid');
   }
 });
+
+// ==== Modal ====
+const __modal=(()=>{const el=document.getElementById('gameModal');const titleEl=document.getElementById('modalTitle');const mount=document.getElementById('gameMount');const closeBtn=document.getElementById('modalClose');function open({title,build}){titleEl.textContent=title||'Trò chơi';mount.innerHTML='';build&&build(mount);el.classList.add('show');el.setAttribute('aria-hidden','false')}function close(){el.classList.remove('show');el.setAttribute('aria-hidden','true');mount.innerHTML=''}closeBtn.addEventListener('click',close);el.addEventListener('click',e=>{if(e.target===el)close()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&el.classList.contains('show'))close()});return{open,close}})();
+
+// ==== Whack-a-mole builder ====
+
+function buildWhack(m){
+  const wrap=document.createElement('div'); wrap.className='wam-wrap';
+  const hud=document.createElement('div'); hud.className='wam-hud';
+  hud.innerHTML='<span class="pill" id="wamTime">30s</span><span class="pill">Điểm: <b id="wamScore">0</b></span><span class="pill">Cấp: <b id="wamLv">1</b></span>';
+  const board=document.createElement('div'); board.className='wam-board';
+  for(let i=0;i<9;i++){ const h=document.createElement('div'); h.className='wam-hole'; h.innerHTML='<div class="wam-mole"></div>'; board.appendChild(h); }
+  const ctrl=document.createElement('div'); ctrl.className='wam-ctrl'; ctrl.innerHTML='<button class="btn" id="wamStart">Bắt đầu</button>';
+  wrap.appendChild(hud); wrap.appendChild(board); wrap.appendChild(ctrl); m.appendChild(wrap);
+
+  // Progressive difficulty:
+  // - Level increases mỗi 6s => giảm thời gian giữa lần xuất hiện (spawnRate) và rút ngắn thời gian hiện (life)
+  // - Sau 18s, có thể xuất hiện 2 nốt cùng lúc (multiSpawn)
+  let gameTimer=null, spawnTimer=null, level=1, left=30, score=0;
+  let spawnRate=900;     // ms, sẽ giảm theo level
+  let life=900;          // thời gian một "chuột" tồn tại (ms)
+  let multiSpawn=false;
+  const holes=[...board.children];
+
+  function setLevelByTime(){
+    const elapsed = 30-left; // s
+    const newLv = 1 + Math.floor(elapsed/6); // 1..5
+    if(newLv!==level){
+      level=newLv;
+      document.getElementById('wamLv').textContent=level;
+      // scale difficulty
+      spawnRate = Math.max(350, 900 - (level-1)*120);
+      life = Math.max(350, 900 - (level-1)*130);
+      if(elapsed>=18) multiSpawn=true;
+      restartSpawner();
+    }
+  }
+
+  function spawnOnce(){
+    // clear expired moles
+    holes.forEach(h=>h.classList.remove('active'));
+    // choose 1 or 2 holes
+    const count = multiSpawn ? 1 + Math.round(Math.random()) : 1;
+    const picks = [];
+    while(picks.length<count){
+      const idx = Math.floor(Math.random()*holes.length);
+      if(!picks.includes(idx)) picks.push(idx);
+    }
+    picks.forEach(i=>{
+      const hole = holes[i];
+      hole.classList.add('active');
+      // auto hide after life
+      setTimeout(()=> hole.classList.remove('active'), life);
+    });
+  }
+
+  function restartSpawner(){
+    if(spawnTimer) clearInterval(spawnTimer);
+    spawnTimer = setInterval(spawnOnce, spawnRate);
+  }
+
+  board.addEventListener('click',e=>{
+    const hole=e.target.closest('.wam-hole'); if(!hole) return;
+    if(hole.classList.contains('active')){
+      score++; document.getElementById('wamScore').textContent=score;
+      hole.classList.remove('active');
+    }
+  });
+
+  document.getElementById('wamStart').addEventListener('click',()=>{
+    // reset
+    score=0; left=30; level=1; spawnRate=900; life=900; multiSpawn=false;
+    document.getElementById('wamScore').textContent='0';
+    document.getElementById('wamTime').textContent='30s';
+    document.getElementById('wamLv').textContent='1';
+    holes.forEach(h=>h.classList.remove('active'));
+
+    // start timers
+    if(gameTimer) clearInterval(gameTimer);
+    if(spawnTimer) clearInterval(spawnTimer);
+    gameTimer = setInterval(()=>{
+      left--; document.getElementById('wamTime').textContent=left+'s';
+      setLevelByTime();
+      if(left<=0){
+        clearInterval(gameTimer); clearInterval(spawnTimer);
+        holes.forEach(h=>h.classList.remove('active'));
+      }
+    },1000);
+    restartSpawner();
+    spawnOnce(); // immediate first
+  });
+}
+
+
+// ==== Render: only one game card ====
+function renderInlineGames(){
+  const grid=document.getElementById('games-grid'); if(!grid) return;
+  grid.innerHTML='';
+  const card=document.createElement('div'); card.className='game';
+  card.innerHTML=`<div class="thumb whack"></div>
+    <div class="body">
+      <h5>Đập chuột (Whack‑a‑mole)</h5>
+      <p>Chạm vào chuột chũi khi xuất hiện để ghi điểm trong 30s.</p>
+      <button class="btn small">Chơi</button>
+    </div>`;
+  card.querySelector('button').addEventListener('click',()=>__modal.open({title:'Đập chuột (Whack‑a‑mole)',build:buildWhack}));
+  card.querySelector('.thumb').addEventListener('click',()=>__modal.open({title:'Đập chuột (Whack‑a‑mole)',build:buildWhack}));
+  grid.appendChild(card);
+}
+
+document.getElementById('calcBtn')?.addEventListener('click', ()=> { setTimeout(()=> renderInlineGames(), 0); });
+
 </script>
 </body>
 </html>

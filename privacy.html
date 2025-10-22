@@ -50,13 +50,17 @@
   .page-title{font-size:40px; line-height:1.12; font-weight:900; margin:22px 0 6px}
   @media(min-width:768px){ .page-title{font-size:56px} }
   .container-narrow{max-width:980px; padding:0 24px; margin:0 auto}
+
+  /* Standardized logo sizing (like index) */
+  .brand .logo{height:56px; width:auto; object-fit:contain; display:block}
+  @media(min-width:900px){ .brand .logo{height:68px} }
 </style>
 </head>
 <body>
 
   <header class="navbar">
     <nav class="container nav-row">
-      <a class="brand" href="index.html"><span class="brand-dot" aria-hidden="true"></span> <span>Edumindcare</span></a>
+      <a class="brand" href="index.html"><img class="logo" src="logo.jpg" alt="Logo Trần Đại Nghĩa"><span>Edumindcare</span></a>
       <div class="links">
         <a href="about.html">Phương pháp của Chúng tôi</a>
         <a href="games.html">Trò Chơi Giảm Căng Thẳng</a>
